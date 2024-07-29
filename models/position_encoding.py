@@ -8,7 +8,7 @@ from torch import nn
 
 from util.misc import NestedTensor
 
-
+# sin cos方式位置编码
 class PositionEmbeddingSine(nn.Module):
     """
     This is a more standard version of the position embedding, very similar to the one
@@ -48,6 +48,7 @@ class PositionEmbeddingSine(nn.Module):
         return pos
 
 
+# 可训练的位置编码
 class PositionEmbeddingLearned(nn.Module):
     """
     Absolute pos embedding, learned.
@@ -76,6 +77,7 @@ class PositionEmbeddingLearned(nn.Module):
         return pos
 
 
+# 选择不同的位置编码方式
 def build_position_encoding(args):
     N_steps = args.hidden_dim // 2
     if args.position_embedding in ('v2', 'sine'):
